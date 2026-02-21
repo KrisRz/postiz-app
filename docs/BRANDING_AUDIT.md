@@ -82,6 +82,13 @@ Kopiować z `Postra/coming-soon/`: logo.png, postrapl.png, favicon.png. Wygenero
 | `package.json` | `"name": "postiz-backend"` — opcjonalnie postra-backend |
 | `src/api/routes/copilot.controller.ts` | `getAgent('postiz')` — nazwa agenta wewnętrzna, można zostawić lub zmienić na 'postra' |
 
+## 2b. ZMIENIĆ — Orchestrator (apps/orchestrator)
+
+| Plik | Zmiana |
+|------|--------|
+| `package.json` | `"name": "postiz-orchestrator"` — opcjonalnie postra-orchestrator |
+| `src/workflows/digest.email.workflow.ts` | `[Postiz] Your latest notifications` → `[Postra] Your latest notifications` |
+
 ---
 
 ## 3. ZMIENIĆ — Libraries (nestjs, shared)
@@ -124,6 +131,10 @@ Lista plików translation: `en`, `zh`, `vi`, `tr`, `ru`, `pt`, `ko`, `ka_ge`, `j
 | `.github/workflows/publish-extension.yml`, `build-extension.yaml` | FRONTEND_URL=platform.postiz.com → postra.pl |
 | `.github/copilot-instructions.md` | docs.postiz.com → postra.pl/docs (lub zostawić jako referencja upstream) |
 | `.github/ISSUE_TEMPLATE/config.yml`, `01_bug_report.yml` | discord.postiz.com → np. usunąć lub link do Postra community |
+| `docker-compose.yaml` | nazwy kontenerów i serwisów `postiz-*` → `postra-*` (opcjonalnie — wewnętrzne) |
+| `docker-compose.dev.yaml` | komentarz docs.postiz.com; nazwy kontenerów `postiz-*` → `postra-*` (opcjonalnie — wewnętrzne) |
+| `var/docker/docker-build.sh`, `docker-create.sh` | `localhost/postiz` → `localhost/postra` |
+| `apps/cli/examples/basic-usage.sh`, `command-line-examples.sh` | "Postiz CLI" → "Postra CLI", komendy `postiz` → `postra` |
 
 ---
 
@@ -152,7 +163,7 @@ Dla forku KrisRz/postiz-app (Postra):
 
 ## 7. Podsumowanie
 
-- **ZMIENIĆ:** ~50+ plików (frontend pages, components, layout, backend services, agencies emails, i18n, env, SDK, CLI, extension, workflows, README).
+- **ZMIENIĆ:** ~60+ plików (frontend pages, components, layout, backend services, orchestrator emails, agencies emails, i18n, env, SDK, CLI, extension, docker-compose, workflows, shell scripts, README).
 - **Assety:** favicon.ico, favicon.png, postiz.svg, postiz-text.svg, postiz-fav.png, logo.svg, logo-text.svg — zastąpić wersjami Postra.
 - **ZACHOWAĆ:** LICENSE, NOTICE, @postiz/wallets; w stopce UI dodać link "Kod źródłowy" → https://github.com/KrisRz/postiz-app.
 
