@@ -2,37 +2,37 @@ export const testimonials1 = [
   {
     picture: '/auth/avatars/vincent.jpg',
     name: 'Vincent L.',
-    description: 'Marketing Coordinator',
+    description: 'Koordynator marketingu',
     content: (
       <>
-        The UI is friendly and the AI content assistant is surprisingly
-        effective for professional tones. I especially like how it adjusts to
-        different industries.
+        Interfejs jest prosty i wygodny, a asystent AI naprawdę pomaga przy
+        tworzeniu treści. Najbardziej podoba mi się to, że dobrze dopasowuje
+        styl komunikacji do różnych branż.
       </>
     ),
   },
   {
     picture: '/auth/avatars/dilini.jpeg',
     name: 'Dilini R.',
-    description: 'AI & Tech Consultant',
+    description: 'Konsultantka AI i technologii',
     content: (
       <>
-        I just found out about Postra, a tool for scheduling social media.{' '}
+        Niedawno trafiłam na Postra, narzędzie do planowania publikacji w
+        social media.{' '}
         {'\n'}
-        Exactly what I wish there was a few years back, I even thought of
-        building one myself at one point, but didn't have the time to. {'\n'}
-        What I like about it so far: {'\n\n'}
-        It connects to LinkedIn, X, Instagram, Facebook (and others) from one
-        dashboard. {'\n'}
+        To dokładnie coś, czego brakowało mi kilka lat temu. Sama kiedyś
+        myślałam o zbudowaniu podobnego rozwiązania, ale nigdy nie miałam na to
+        przestrzeni.{' '}
         {'\n'}
-        Because it's open-source, you can see how it works and even tweak it if
-        you need to. {'\n'}
+        Co najbardziej podoba mi się do tej pory? {'\n\n'}
+        Łączy LinkedIn, X, Instagram, Facebook i inne kanały w jednym miejscu.{' '}
         {'\n'}
-        I've used a few scheduling tools before and most of them are either
-        expensive or try to be "all-in-one marketing platforms." {'\n'}
         {'\n'}
-        Postra seems to focus on just doing one thing well. {'\n'}
+        Ponieważ jest open source, możesz sprawdzić, jak działa, i w razie
+        potrzeby dopasować go do własnych potrzeb. {'\n'}
         {'\n'}
+        Korzystałam wcześniej z kilku narzędzi do planowania postów i większość
+        z nich była albo zbyt droga, albo próbowała robić wszystko naraz.
       </>
     ),
   },
@@ -42,35 +42,37 @@ export const testimonials1 = [
     description: 'CEO',
     content: (
       <>
-        As a privacy-first company we appreciate being able to self-host Postra!
-        It brings all the core functionality of a social media scheduler plus a
-        lot of AI to make things faster. It's also very easy to deploy and use,
-        great work!
+        Jako firma, która stawia na prywatność, bardzo doceniamy możliwość
+        self-hostingu Postra. Dostajemy wszystkie kluczowe funkcje planowania
+        publikacji w social media, a do tego narzędzia AI, które realnie
+        przyspieszają pracę. Wdrożenie i codzienne korzystanie z platformy są
+        po prostu bardzo wygodne.
       </>
     ),
   },
   {
     picture: '/auth/avatars/george.jpg',
     name: 'George B.',
-    description: 'Marketing Assistant',
+    description: 'Asystent marketingu',
     content: (
       <>
-        It's so easy to jump in and start scheduling. I like that I can see all
-        planned posts at a glance and edit them quickly if needed.
+        Bardzo łatwo wejść do aplikacji i od razu zacząć planować posty.
+        Podoba mi się, że wszystkie zaplanowane publikacje widzę od razu i w
+        razie potrzeby mogę szybko je edytować.
       </>
     ),
   },
   {
     picture: '/auth/avatars/maria.jpg',
     name: 'Maria Camila A.',
-    description: 'Data Analyst',
+    description: 'Analityczka danych',
     content: (
       <>
-        Postra changed how we manage our social media presence by aggregating
-        our platforms into one effective tool. Post scheduling, and AI post
-        ideation are two of the many features that come with Postra, and have
-        made our management of social media simple and effective! Highly
-        recommend
+        Postra zmieniła sposób, w jaki zarządzamy naszą obecnością w social
+        mediach, ponieważ łączy wszystkie platformy w jednym skutecznym
+        narzędziu. Planowanie postów i generowanie pomysłów z pomocą AI to
+        tylko dwie z funkcji, które sprawiły, że nasza praca stała się prostsza
+        i znacznie bardziej efektywna. Zdecydowanie polecam.
       </>
     ),
   },
@@ -80,38 +82,39 @@ export const testimonials1 = [
     description: 'CEO',
     content: (
       <>
-        It only takes 10 minutes to set up your X scheduling automation. {'\n'}
-        n8n + Postra =🔥Never miss a day of posting again: {'\n\n'}→ Easy to get
-        started {'\n'}→ Tutorial video included {'\n'}→ Automated content
-        creation {'\n'}→ Multi-platform publishing {'\n'}→ Self-hosted (no
-        monthly fees) {'\n'}→ Open-source (customize everything) {'\n'}
+        Konfiguracja automatyzacji publikacji na X zajmuje tylko 10 minut.{' '}
+        {'\n'}
+        n8n + Postra = 🔥 i koniec z pustymi dniami bez publikacji. {'\n\n'}→
+        Szybki start {'\n'}→ Zautomatyzowane tworzenie treści {'\n'}→
+        Publikacja na wielu platformach {'\n'}→ Self-hosting bez miesięcznych
+        opłat {'\n'}→ Open source, więc możesz dopasować wszystko do własnych
+        potrzeb {'\n'}
       </>
     ),
   },
   {
     picture: '/auth/avatars/henry.jpg',
     name: 'Henry H.',
-    description: 'Social Media Coordinator',
+    description: 'Koordynator social media',
     content: (
       <>
-        The interface is clean and simple. I love how the AI assistant helps
-        speed up caption writing without sounding generic. It's really helpful
-        when I'm on a tight schedule.
+        Interfejs jest przejrzysty i prosty. Bardzo podoba mi się to, jak
+        asystent AI przyspiesza pisanie opisów, a jednocześnie nie brzmi
+        generycznie. To naprawdę pomaga, kiedy liczy się czas.
       </>
     ),
   },
   {
     picture: '/auth/avatars/andy.jpeg',
     name: 'Andy C.',
-    description: 'AI Specialist',
+    description: 'Specjalista AI',
     content: (
       <>
-        Manage all your social media accounts from a single place: Postra, a
-        really cool tool I recently discovered :D! {'\n'}
-        It comes with a bunch of cool tools for posting at specific times,
-        posting across multiple platforms simultaneously, etc. And all of this
-        can potentially be self-hosted for free; you just need a small server to
-        configure everything ;D! It works really well :D!
+        Zarządzanie wszystkimi kontami social media z jednego miejsca to dla
+        mnie największa zaleta Postra. {'\n'}
+        Planowanie publikacji, wrzucanie treści na wiele platform i
+        automatyzacja codziennej pracy naprawdę robią różnicę. Duży plus za
+        to, że całość można uruchomić także na własnym środowisku.
       </>
     ),
   },
@@ -124,33 +127,33 @@ export const testimonials2 = [
     description: 'Senior frontend developer',
     content: (
       <>
-        🌟 Exciting news! 🚀 I've just started using Postra, a fantastic new
-        tool for scheduling my social media content! {'\n\n'}
-        Why did I choose Postra? The ability to self-host it means significant
-        savings for me! 💰 {'\n\n'}
-        Postra is an open-source scheduling tool that allows you to plan and
-        automate posts across 19+ platforms, including X, LinkedIn, BlueSky, and
-        Mastodon. {'\n\n'}
-        With its powerful editor, you can easily connect your accounts, create
-        rich scheduled posts, and manage multiple channels all in one place.
-        Plus, it supports image uploads, recurring posts, and timezone-aware
-        scheduling! 📅✨ {'\n\n'}
-        Built with privacy and flexibility in mind, Postra can run on your own
-        infrastructure or be used as a hosted service. It's perfect for
-        individuals, teams, and communities looking for control and automation
-        without the unnecessary bloat. {'\n\n'}
+        Właśnie zacząłem korzystać z Postra, nowego narzędzia do planowania
+        treści w social media. {'\n\n'}
+        Dlaczego wybrałem Postra? Możliwość self-hostingu przekłada się dla
+        mnie na realne oszczędności. {'\n\n'}
+        Postra to open-source’owe narzędzie do planowania publikacji, które
+        pozwala planować i automatyzować posty na ponad 19 platformach, w tym
+        X, LinkedIn, Bluesky i Mastodon. {'\n\n'}
+        Dzięki rozbudowanemu edytorowi możesz łatwo podłączyć swoje konta,
+        przygotować zaplanowane posty i zarządzać wieloma kanałami w jednym
+        miejscu. Do tego dochodzi upload grafik, posty cykliczne i planowanie z
+        uwzględnieniem stref czasowych. {'\n\n'}
+        Postra została stworzona z myślą o prywatności i elastyczności, więc
+        może działać na własnej infrastrukturze albo jako usługa hostowana. To
+        bardzo dobre rozwiązanie dla osób i zespołów, które chcą mieć więcej
+        kontroli bez zbędnego skomplikowania. {'\n\n'}
       </>
     ),
   },
   {
     picture: '/auth/avatars/kiley.jpeg',
     name: 'Kiley H.',
-    description: 'Content Creator',
+    description: 'Twórczyni treści',
     content: (
       <>
-        The unified dashboard helps me manage Instagram, Facebook, and LinkedIn
-        from one place. I love that it saves time and keeps our campaigns
-        aligned across all platforms.
+        Jeden wspólny dashboard pomaga mi zarządzać Instagramem, Facebookiem i
+        LinkedInem z jednego miejsca. Najbardziej lubię to, że oszczędza czas i
+        pomaga utrzymać spójność kampanii na wszystkich platformach.
       </>
     ),
   },
@@ -160,21 +163,22 @@ export const testimonials2 = [
     description: 'Social Media Manager',
     content: (
       <>
-        There are several things I love about this suite. Some of these things
-        include {'\n'}- Ease of use {'\n'}- Helps me organize my social media
-        accounts {'\n'}- I get work done faster {'\n'}- It does not consume my
-        time {'\n'}- it has a professional interface {'\n'}
+        Jest kilka rzeczy, które szczególnie cenię w tym narzędziu. Należą do
+        nich między innymi: {'\n'}- łatwość obsługi {'\n'}- lepsza organizacja
+        kont social media {'\n'}- szybsza codzienna praca {'\n'}- mniej
+        straconego czasu {'\n'}- profesjonalny interfejs {'\n'}
       </>
     ),
   },
   {
     picture: '/auth/avatars/david.jpg',
     name: 'David C.',
-    description: 'Digital Marketing Manager',
+    description: 'Menedżer marketingu cyfrowego',
     content: (
       <>
-        Postra makes it so easy to plan ahead. The AI suggestions are relevant,
-        and the platform feels lightweight but powerful
+        Postra bardzo ułatwia planowanie z wyprzedzeniem. Sugestie AI są
+        trafne, a sama platforma sprawia wrażenie lekkiej, ale jednocześnie
+        daje poczucie naprawdę dużych możliwości.
       </>
     ),
   },
@@ -184,21 +188,22 @@ export const testimonials2 = [
     description: 'CEO',
     content: (
       <>
-        Good tool for social media campaigns. The great thing is that the
-        platform constantly evolves - new features appear all the time, so I can
-        follow the latest trends (latest AI developments) without leaving
-        Postra.
+        To bardzo dobre narzędzie do prowadzenia kampanii w social mediach.
+        Największą zaletą jest to, że platforma stale się rozwija. Nowe funkcje
+        pojawiają się regularnie, dzięki czemu mogę śledzić najnowsze trendy,
+        zwłaszcza w obszarze AI, bez wychodzenia z Postra.
       </>
     ),
   },
   {
     picture: '/auth/avatars/anica.jpg',
     name: 'Anica R.',
-    description: 'University Applications Specialist',
+    description: 'Specjalistka ds. rekrutacji na uczelnie',
     content: (
       <>
-        It is easy to use, manages your posts simple.It is a helpful tool that
-        let you organize your content.
+        Jest prosta w użyciu i ułatwia zarządzanie postami. To praktyczne
+        narzędzie, które pomaga dobrze uporządkować treści i pracować
+        spokojniej.
       </>
     ),
   },
@@ -208,8 +213,9 @@ export const testimonials2 = [
     description: 'Content Manager',
     content: (
       <>
-        It's super easy to use even if you're not very techy. The AI writing
-        tool gives good drafts so I don't have to start from scratch every time
+        Korzystanie z niej jest bardzo proste, nawet jeśli nie masz mocno
+        technicznego zaplecza. Narzędzie AI do pisania tworzy dobre szkice,
+        więc nie muszę za każdym razem zaczynać od zera.
       </>
     ),
   },
@@ -219,8 +225,9 @@ export const testimonials2 = [
     description: 'Developer Relations Engineer',
     content: (
       <>
-        I work in Developer Relations, so having a tool that helps me manage and
-        crosspost to different platforms saves me so, so, so much time!
+        Pracuję w Developer Relations, więc narzędzie, które pomaga mi
+        zarządzać publikacją i cross-postingiem na różnych platformach,
+        oszczędza mi naprawdę ogromną ilość czasu.
       </>
     ),
   },

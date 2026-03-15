@@ -13,7 +13,11 @@ export const Input = ({
   onUpload,
   hideStopButton = false,
   onChange,
-}: InputProps & { onChange: (value: string) => void }) => {
+  placeholder,
+}: InputProps & {
+  onChange: (value: string) => void;
+  placeholder?: string;
+}) => {
   const context = useChatContext();
   const copilotContext = useCopilotContext();
   const showPoweredBy = !copilotContext.copilotApiConfig?.publicApiKey;
@@ -73,7 +77,7 @@ export const Input = ({
       <div className="copilotKitInput" onClick={handleDivClick}>
         <AutoResizingTextarea
           ref={textareaRef}
-          placeholder={context.labels.placeholder}
+          placeholder={placeholder || context.labels.placeholder}
           autoFocus={false}
           maxRows={MAX_NEWLINES}
           value={text}

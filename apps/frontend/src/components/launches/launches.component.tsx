@@ -550,13 +550,9 @@ export const LaunchesComponent = () => {
                 <div className="flex-1 max-h-[500px] justify-center items-center flex">
                   <div className="flex flex-col gap-[12px] text-center">
                     <img
-                      src={
-                        mode === 'dark'
-                          ? '/no-channels.svg'
-                          : '/no-channels-colors.svg'
-                      }
+                      src="/kanal.png"
                       alt="No channels"
-                      className="mx-auto min-w-[100%]"
+                      className="mx-auto w-full max-w-[320px] h-auto"
                     />
                     <div className="font-[600] text-[20px]">
                       {t('no_channels', 'No channels yet')}
@@ -585,11 +581,6 @@ export const LaunchesComponent = () => {
               {billingEnabled && user?.isLifetime && (
                 <div>{capitalize(user?.tier?.current || '')} tier</div>
               )}
-              <div>
-                {process.env.NEXT_PUBLIC_VERSION
-                  ? process.env.NEXT_PUBLIC_VERSION
-                  : ''}
-              </div>
             </div>
           </div>
         </div>

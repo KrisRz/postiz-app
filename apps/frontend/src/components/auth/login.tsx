@@ -71,7 +71,7 @@ export function Login() {
             <p className="mt-[8px] text-[15px] text-textColor/58">
               {t(
                 'auth_login_subtitle',
-                'Access your workspace, calendar, and connected channels.'
+                'Uzyskaj dostęp do swojego workspace, kalendarza i podłączonych kanałów.'
               )}
             </p>
           </div>

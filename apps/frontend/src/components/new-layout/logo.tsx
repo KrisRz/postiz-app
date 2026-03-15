@@ -10,7 +10,7 @@ export const Logo = () => {
       width={60}
       height={60}
       priority
-      className="mt-[8px] min-h-[60px] min-w-[60px] rounded-[16px]"
+      className="mt-[8px] min-h-[60px] min-w-[60px] rounded-[16px] mx-auto"
     />
   );
 };
