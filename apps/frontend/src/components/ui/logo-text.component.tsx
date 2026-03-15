@@ -3,13 +3,15 @@ import Image from 'next/image';
 
 export const LogoTextComponent = () => {
   return (
-    <Image
-      src="/postra-logo.png"
-      alt="Postra"
-      width={132}
-      height={48}
-      priority
-      className="h-auto w-[132px]"
-    />
+    <div className="flex w-full justify-center">
+      <Image
+        src="/logon3obackground-clean.png"
+        alt="Postra"
+        width={594}
+        height={582}
+        priority
+        className="h-auto w-[92px] sm:w-[104px]"
+      />
+    </div>
   );
 };

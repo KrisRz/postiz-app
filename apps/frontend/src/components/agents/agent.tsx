@@ -107,11 +107,11 @@ export const AgentList: FC<{ onChange: (arr: any[]) => void }> = ({
   return (
     <div
       className={clsx(
-        'trz bg-newBgColorInner flex flex-col gap-[15px] transition-all relative',
-        collapseMenu === '1' ? 'group sidebar w-[100px]' : 'w-[260px]'
+        'trz flex flex-col gap-[15px] transition-all relative border-e border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,14,28,0.96))] backdrop-blur-xl',
+        collapseMenu === '1' ? 'group sidebar w-[100px]' : 'w-[280px]'
       )}
     >
-      <div className="absolute top-0 start-0 w-full h-full p-[20px] overflow-auto scrollbar scrollbar-thumb-fifth scrollbar-track-newBgColor">
+      <div className="absolute top-0 start-0 w-full h-full p-[20px] overflow-auto scrollbar scrollbar-thumb-fifth scrollbar-track-transparent">
         <div className="flex items-center">
           <h2 className="group-[.sidebar]:hidden flex-1 text-[20px] font-[500] mb-[15px]">
             {t('select_channels', 'Select Channels')}
@@ -143,8 +143,10 @@ export const AgentList: FC<{ onChange: (arr: any[]) => void }> = ({
               onClick={setIntegration(integration)}
               key={integration.id}
               className={clsx(
-                'flex gap-[12px] items-center group/profile justify-center hover:bg-boxHover rounded-e-[8px] hover:opacity-100 cursor-pointer',
-                !selected.some((p) => p.id === integration.id) && 'opacity-20'
+                'flex gap-[12px] items-center group/profile justify-center rounded-[12px] px-[10px] py-[8px] cursor-pointer transition-all duration-200',
+                selected.some((p) => p.id === integration.id)
+                  ? 'bg-white/[0.05] border border-white/10 shadow-[0_8px_30px_rgba(2,6,23,0.25)]'
+                  : 'opacity-35 border border-transparent hover:opacity-100 hover:bg-white/[0.04] hover:border-white/8'
               )}
             >
               <div
@@ -203,7 +205,9 @@ export const Agent: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <PropertiesContext.Provider value={{ properties }}>
       <AgentList onChange={setProperties} />
-      <div className="bg-newBgColorInner flex flex-1">{children}</div>
+      <div className="flex flex-1 bg-[linear-gradient(180deg,rgba(10,14,26,0.94),rgba(8,14,28,0.98))]">
+        {children}
+      </div>
       <Threads />
     </PropertiesContext.Provider>
   );
@@ -224,15 +228,15 @@ const Threads: FC = () => {
   return (
     <div
       className={clsx(
-        'trz bg-newBgColorInner flex flex-col gap-[15px] transition-all relative',
-        'w-[260px]'
+        'trz flex flex-col gap-[15px] transition-all relative border-s border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,14,28,0.96))] backdrop-blur-xl',
+        'w-[280px]'
       )}
     >
-      <div className="absolute top-0 start-0 w-full h-full p-[20px] overflow-auto scrollbar scrollbar-thumb-fifth scrollbar-track-newBgColor">
+      <div className="absolute top-0 start-0 w-full h-full p-[20px] overflow-auto scrollbar scrollbar-thumb-fifth scrollbar-track-transparent">
         <div className="mb-[15px] justify-center flex group-[.sidebar]:pb-[15px]">
           <Link
             href={`/agents`}
-            className="text-white whitespace-nowrap flex-1 pt-[12px] pb-[14px] ps-[16px] pe-[20px] group-[.sidebar]:p-0 min-h-[44px] max-h-[44px] rounded-md bg-btnPrimary flex justify-center items-center gap-[5px] outline-none"
+            className="whitespace-nowrap flex-1 pt-[12px] pb-[14px] ps-[16px] pe-[20px] group-[.sidebar]:p-0 min-h-[44px] max-h-[44px] rounded-[12px] bg-[linear-gradient(135deg,#38bdf8,#a78bfa)] text-slate-950 shadow-[0_16px_40px_rgba(56,189,248,0.28)] flex justify-center items-center gap-[5px] outline-none font-[700]"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -244,7 +248,7 @@ const Threads: FC = () => {
             >
               <path
                 d="M10.5001 4.16699V15.8337M4.66675 10.0003H16.3334"
-                stroke="white"
+                stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -259,8 +263,10 @@ const Threads: FC = () => {
           {data?.threads?.map((p: any) => (
             <Link
               className={clsx(
-                'overflow-ellipsis overflow-hidden whitespace-nowrap hover:bg-newBgColor px-[10px] py-[6px] rounded-[10px] cursor-pointer',
-                p.id === id && 'bg-newBgColor'
+                'overflow-ellipsis overflow-hidden whitespace-nowrap px-[12px] py-[10px] rounded-[12px] cursor-pointer border transition-all duration-200',
+                p.id === id
+                  ? 'bg-white/[0.06] border-sky-300/15 text-textColor shadow-[0_10px_28px_rgba(2,6,23,0.24)]'
+                  : 'border-transparent text-textColor/75 hover:text-textColor hover:bg-white/[0.04] hover:border-white/8'
               )}
               href={`/agents/${p.id}`}
               key={p.id}

@@ -1,7 +1,6 @@
 export const dynamic = 'force-dynamic';
 import { ReactNode } from 'react';
 import loadDynamic from 'next/dynamic';
-import { TestimonialComponent } from '@gitroom/frontend/components/auth/testimonial.component';
 import { LogoTextComponent } from '@gitroom/frontend/components/ui/logo-text.component';
 const ReturnUrlComponent = loadDynamic(() => import('./return.url.component'));
 export default async function AuthLayout({
@@ -27,21 +26,35 @@ export default async function AuthLayout({
         <div className="pointer-events-none absolute left-[12%] top-[12%] h-[180px] w-[180px] rounded-full bg-[#38bdf8]/10 blur-[100px]" />
         <div className="pointer-events-none absolute bottom-[10%] right-[16%] h-[220px] w-[220px] rounded-full bg-[#a78bfa]/12 blur-[120px]" />
         <div className="relative mb-[16px] rounded-full border border-white/10 bg-white/[0.04] px-[14px] py-[6px] text-[11px] font-[700] uppercase tracking-[0.16em] text-white/58">
-          Built For Modern Social Teams
+          Dla nowoczesnych zespołów social media
         </div>
         <div className="relative max-w-[620px] text-center text-[36px] font-[500] leading-[1.05] tracking-[-0.04em] text-white/92">
-          Plan faster, publish cleaner, and keep every channel aligned with
+          Planuj szybciej, publikuj sprawniej i utrzymuj wszystkie kanały w
           <br />
           <span className="bg-[linear-gradient(135deg,#38bdf8,#a78bfa)] bg-clip-text text-transparent">
-            one premium Postra workspace
+            jednym dopracowanym workspace Postra
           </span>
         </div>
         <p className="relative mt-[18px] max-w-[560px] text-center text-[15px] leading-[1.7] text-slate-300/78">
-          Your landing page already feels premium. The product should feel the
-          same the moment you log in, so this auth flow now carries the same
-          dark glass surfaces, airy spacing, and calm sky-blue accent system.
+          Landing page Postra ma już premium charakter. Produkt powinien dawać
+          to samo odczucie od pierwszego logowania, dlatego ten ekran
+          wykorzystuje ten sam ciemny, szklany styl, spokojne odstępy i
+          akcenty w odcieniach błękitu.
         </p>
-        <TestimonialComponent />
+        <div className="relative mt-[34px] flex w-full max-w-[780px] flex-1 items-center justify-center px-[24px] pb-[16px]">
+          <div className="w-full max-w-[640px] rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(30,41,59,0.52),rgba(15,23,42,0.82))] p-[28px] text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] backdrop-blur-xl">
+            <div className="mb-[12px] inline-flex rounded-full border border-white/10 bg-white/[0.04] px-[12px] py-[5px] text-[11px] font-[700] uppercase tracking-[0.14em] text-white/55">
+              Historie użytkowników
+            </div>
+            <div className="text-[24px] font-[600] tracking-[-0.03em] text-white/92">
+              Do uzupełnienia
+            </div>
+            <p className="mx-auto mt-[12px] max-w-[460px] text-[14px] leading-[1.7] text-slate-300/72">
+              Ta sekcja jest tymczasowo ukryta i zostanie zastąpiona
+              oryginalnymi historiami klientów Postra.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -56,27 +56,29 @@ export const AgentChat: FC = () => {
       <div
         style={
           {
-            '--copilot-kit-primary-color': 'var(--new-btn-text)',
-            '--copilot-kit-background-color': 'var(--new-bg-color)',
+            '--copilot-kit-primary-color': '#38bdf8',
+            '--copilot-kit-background-color': 'rgba(15,23,42,0.72)',
           } as CopilotKitCSSProperties
         }
-        className="trz agent bg-newBgColorInner flex flex-col gap-[15px] transition-all flex-1 items-center relative"
+        className="trz agent flex flex-col gap-[15px] transition-all flex-1 items-center relative bg-[linear-gradient(180deg,rgba(10,14,26,0.94),rgba(8,14,28,0.98))]"
       >
         <div className="absolute left-0 w-full h-full pb-[20px]">
           <CopilotChat
             className="w-full h-full"
             labels={{
-              title: t('your_assistant', 'Your Assistant'),
-              initial: t('agent_welcome_message', `Hello, I am your Postra agent 🙌🏻.
-              
-I can schedule a post or multiple posts to multiple channels and generate pictures and videos.
+              title: t('your_assistant', 'Twój Asystent'),
+              initial: t(
+                'agent_welcome_message',
+                `Witam, jestem Twoim agentem Postra 🙌🏻.
 
-You can select the channels you want to use from the left menu.
+Mogę zaplanować jeden post albo całą serię postów na wielu kanałach oraz generować zdjęcia i filmy.
 
-You can see your previous conversations from the right menu.
+Kanały, których chcesz używać, wybierzesz w menu po lewej stronie.
 
-You can also use me as an MCP Server, check Settings >> Public API
-`),
+Po prawej stronie znajdziesz swoje wcześniejsze rozmowy.
+
+Możesz też używać mnie jako serwera MCP. Zajrzyj do Ustawienia >> Publiczne API.`
+              ),
             }}
             UserMessage={Message}
             Input={NewInput}
@@ -144,6 +146,7 @@ const NewInput: FC<InputProps> = (props) => {
   const [media, setMedia] = useState([] as { path: string; id: string }[]);
   const [value, setValue] = useState('');
   const { properties } = useContext(PropertiesContext);
+  const t = useT();
   return (
     <>
       <MediaPortal
@@ -153,6 +156,10 @@ const NewInput: FC<InputProps> = (props) => {
       />
       <Input
         {...props}
+        placeholder={t(
+          'write_your_post_placeholder',
+          'Napisz swoją wiadomość...'
+        )}
         onChange={setValue}
         onSend={(text) => {
           const send = props.onSend(

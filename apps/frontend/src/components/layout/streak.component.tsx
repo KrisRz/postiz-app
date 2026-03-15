@@ -21,9 +21,9 @@ export const StreakComponent: FC = () => {
 
   const tooltipContent = useMemo(() => {
     if (streakDays === 1) {
-      return 'You started your streak today! Keep posting daily to maintain it.';
+      return 'Twój streak zaczął się dzisiaj. Publikuj codziennie, aby go utrzymać.';
     }
-    return `You're on a ${streakDays} day posting streak! Keep it going!`;
+    return `Masz już ${streakDays}-dniowy streak publikacji. Tak trzymaj.`;
   }, [streakDays]);
 
   if (!user?.streakSince || streakDays <= 0) {

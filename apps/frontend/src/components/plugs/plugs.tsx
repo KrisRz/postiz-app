@@ -96,23 +96,23 @@ export const Plugs = () => {
     return (
       <div className="bg-newBgColorInner p-[20px] flex flex-1 flex-col gap-[15px] transition-all items-center justify-center">
         <div>
-          <img src="/peoplemarketplace.svg" />
+          <img src="/wtyczki.png" className="w-full max-w-[420px] h-auto" />
         </div>
         <div className="text-[48px]">
           {t(
             'there_are_not_plugs_matching_your_channels',
-            'There are not plugs matching your channels'
+            'Brak wtyczek pasujących do Twoich kanałów'
           )}
           <br />
           {t(
             'you_have_to_add_x_or_linkedin_or_threads',
-            'You have to add: X or LinkedIn or Threads'
+            'Dodaj kanał X, LinkedIn lub Threads, aby tu zacząć'
           )}
         </div>
         <Button onClick={() => router.push('/launches')}>
           {t(
             'go_to_the_calendar_to_add_channels',
-            'Go to the calendar to add channels'
+            'Przejdź do kalendarza i dodaj kanały'
           )}
         </Button>
       </div>

@@ -27,8 +27,12 @@ export const useAddProvider = (update?: () => void, invite?: boolean) => {
   return useCallback(async () => {
     const data = await (await fetch('/integrations')).json();
     modal.openModal({
-      title: 'Add Channel',
+      title: 'Dodaj kanał',
       withCloseButton: true,
+      classNames: {
+        modal:
+          '!bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(8,14,28,0.98))] !border !border-white/10 !shadow-[0_32px_120px_rgba(2,6,23,0.55)] !backdrop-blur-xl text-textColor',
+      },
       children: (
         <AddProviderComponent invite={!!invite} update={update} {...data} />
       ),
@@ -67,7 +71,7 @@ export const AddProviderButton: FC<{
           </svg>
         </div>
         <div className="text-start text-[14px] group-[.sidebar]:hidden">
-          {t('add_channel', 'Add Channel')}
+          {t('add_channel', 'Dodaj kanał')}
         </div>
       </button>
       <button
@@ -75,7 +79,7 @@ export const AddProviderButton: FC<{
         data-tooltip-id="tooltip"
         data-tooltip-content={t(
           'invite_link',
-          'Send Invite Link to a customer to add channel'
+          'Wyślij klientowi link zaproszenia do dodania kanału'
         )}
         className="group-[.sidebar]:hidden min-h-[44px] min-w-[44px] bg-btnSimple justify-center items-center flex rounded-[8px] cursor-pointer"
       >
@@ -121,7 +125,7 @@ export const UrlModal: FC<{
   }, []);
   return (
     <div className="rounded-[4px] border border-customColor6 bg-sixth px-[16px] pb-[16px] relative">
-      <TopTitle title={`Instance URL`} />
+      <TopTitle title="Adres instancji" />
       <button
         onClick={close}
         className="outline-none absolute end-[20px] top-[20px] mantine-UnstyledButton-root mantine-ActionIcon-root hover:bg-tableBorder cursor-pointer mantine-Modal-close mantine-1dcetaa"
@@ -151,7 +155,7 @@ export const UrlModal: FC<{
             <Input label="URL" name="url" />
           </div>
           <div>
-            <Button type="submit">{t('connect', 'Connect')}</Button>
+            <Button type="submit">{t('connect', 'Połącz')}</Button>
           </div>
         </form>
       </FormProvider>
@@ -185,7 +189,7 @@ export const CustomVariables: FC<{
         return {
           ...aIcc,
           [item.key]: string()
-            .matches(regex, `${item.label} is invalid`)
+            .matches(regex, `Pole „${item.label}” jest nieprawidłowe`)
             .required(),
         };
       }, {}),
@@ -244,7 +248,7 @@ export const CustomVariables: FC<{
             </div>
           ))}
           <div>
-            <Button type="submit">{t('connect', 'Connect')}</Button>
+            <Button type="submit">{t('connect', 'Połącz')}</Button>
           </div>
         </form>
       </FormProvider>
@@ -259,7 +263,7 @@ const ExtensionNotFound: FC = () => {
       <p className="text-[14px] text-textColor/80">
         {t(
           'extension_not_available',
-          'The Postra browser extension is not installed. You need to install it before connecting this channel.'
+          'Rozszerzenie przeglądarkowe Postra nie jest zainstalowane. Zainstaluj je, zanim połączysz ten kanał.'
         )}
       </p>
       <div className="flex gap-[10px]">
@@ -274,14 +278,14 @@ const ExtensionNotFound: FC = () => {
             modals.closeCurrent();
           }}
         >
-          {t('install_extension', 'Install Extension')}
+          {t('install_extension', 'Zainstaluj rozszerzenie')}
         </Button>
         <Button
           type="button"
           className="flex-1 !bg-transparent border border-tableBorder text-textColor"
           onClick={() => modals.closeCurrent()}
         >
-          {t('cancel', 'Cancel')}
+          {t('cancel', 'Anuluj')}
         </Button>
       </div>
     </div>
@@ -299,33 +303,33 @@ const ChromeExtensionWarning: FC<{
       <p className="text-[14px] text-textColor/80">
         {t(
           'chrome_extension_warning_intro',
-          'This channel connects via the browser extension. Please be aware of the following:'
+          'Ten kanał łączy się przez rozszerzenie przeglądarki. Pamiętaj o poniższych kwestiach:'
         )}
       </p>
       <ul className="flex flex-col gap-[8px] list-disc ps-[20px] text-[14px] text-textColor/80">
         <li>
           {t(
             'chrome_extension_warning_tos',
-            'Using a browser extension to interact with a platform may violate its terms of service and could result in your account being suspended or banned.'
+            'Korzystanie z rozszerzenia przeglądarki do łączenia się z platformą może naruszać jej regulamin i może skutkować zawieszeniem albo zablokowaniem konta.'
           )}
         </li>
         <li>
           {t(
             'chrome_extension_warning_unstable',
-            'This method is not as reliable as native integrations and may experience random disconnections.'
+            'Ta metoda nie jest tak stabilna jak natywne integracje i może powodować losowe rozłączenia.'
           )}
         </li>
         <li>
           {t(
             'chrome_extension_warning_reconnect',
-            'You may need to reconnect periodically if the session expires.'
+            'Jeśli sesja wygaśnie, może być konieczne ponowne połączenie.'
           )}
         </li>
         <li>
-          We will store your cookies securely to facilitate the connection.
+          Będziemy bezpiecznie przechowywać Twoje pliki cookie, aby umożliwić to połączenie.
         </li>
         <li>
-          Postra does not take responsibility for any issues arising or account termination due to the use of this method.
+          Postra nie ponosi odpowiedzialności za problemy ani zamknięcie konta wynikające z użycia tej metody.
         </li>
       </ul>
       <div className="flex gap-[10px] mt-[8px]">
@@ -337,7 +341,7 @@ const ChromeExtensionWarning: FC<{
             onConfirm();
           }}
         >
-          {t('i_understand_continue', 'I understand, continue')}
+          {t('i_understand_continue', 'Rozumiem, kontynuuj')}
         </Button>
         <Button
           type="button"
@@ -347,7 +351,7 @@ const ChromeExtensionWarning: FC<{
             onCancel();
           }}
         >
-          {t('cancel', 'Cancel')}
+          {t('cancel', 'Anuluj')}
         </Button>
       </div>
     </div>
@@ -416,7 +420,7 @@ export const AddProviderComponent: FC<{
             )
           ).json();
           modal.openModal({
-            title: `Add ${capitalize(identifier)}`,
+            title: `Dodaj ${capitalize(identifier)}`,
             withCloseButton: true,
             classNames: {
               modal: 'bg-transparent text-textColor',
@@ -450,7 +454,7 @@ export const AddProviderComponent: FC<{
             toaster.show(
               t(
                 'could_not_connect_to_platform',
-                'Could not connect to the platform'
+                'Nie udało się połączyć z platformą'
               ),
               'warning'
             );
@@ -459,7 +463,7 @@ export const AddProviderComponent: FC<{
 
           if (invite) {
             toaster.show(
-              'Invite link copied to clipboard, link will be available for 1 hour',
+              'Link zaproszenia skopiowano do schowka. Będzie aktywny przez 1 godzinę.',
               'success'
             );
             modal.closeAll();
@@ -476,7 +480,7 @@ export const AddProviderComponent: FC<{
         if (isChromeExtension) {
           const confirmed = await new Promise<boolean>((resolve) => {
             modal.openModal({
-              title: t('chrome_extension_notice', 'Browser Extension Notice'),
+              title: t('chrome_extension_notice', 'Informacja o rozszerzeniu przeglądarki'),
               withCloseButton: true,
               onClose: () => resolve(false),
               children: (
@@ -496,7 +500,7 @@ export const AddProviderComponent: FC<{
           }
           if (!extensionId || !chrome?.runtime?.sendMessage) {
             modal.openModal({
-              title: t('extension_not_available_title', 'Extension Not Found'),
+              title: t('extension_not_available_title', 'Nie znaleziono rozszerzenia'),
               withCloseButton: true,
               children: <ExtensionNotFound />,
             });
@@ -575,10 +579,11 @@ export const AddProviderComponent: FC<{
         }
         if (isExternal) {
           modal.openModal({
-            title: 'URL',
+            title: 'Adres URL',
             withCloseButton: true,
             classNames: {
-              modal: 'bg-transparent text-textColor',
+              modal:
+                '!bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(8,14,28,0.98))] !border !border-white/10 !shadow-[0_32px_120px_rgba(2,6,23,0.55)] !backdrop-blur-xl text-textColor',
             },
             children: <UrlModal gotoUrl={gotoIntegration} />,
           });
@@ -586,10 +591,11 @@ export const AddProviderComponent: FC<{
         }
         if (customFields) {
           modal.openModal({
-            title: t('add_provider_title', 'Add Provider'),
+            title: t('add_provider_title', 'Dodaj kanał'),
             withCloseButton: true,
             classNames: {
-              modal: 'bg-transparent text-textColor',
+              modal:
+                '!bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(8,14,28,0.98))] !border !border-white/10 !shadow-[0_32px_120px_rgba(2,6,23,0.55)] !backdrop-blur-xl text-textColor',
             },
             children: (
               <CustomVariables
@@ -610,7 +616,7 @@ export const AddProviderComponent: FC<{
   const t = useT();
 
   return (
-    <div className="w-full flex flex-col gap-[20px] rounded-[4px] relative]">
+    <div className="w-full flex flex-col gap-[20px] rounded-[4px] relative">
       <div className="flex flex-col">
         <div
           className={clsx(
@@ -648,9 +654,7 @@ export const AddProviderComponent: FC<{
                       'data-tooltip-content': item.toolTip,
                     }
                   : {})}
-                className={
-                  'w-full h-[100px] text-[14px] p-[10px] rounded-[8px] bg-newTableHeader text-textColor relative justify-center items-center flex flex-col gap-[10px] cursor-pointer'
-                }
+                className="w-full h-[100px] text-[14px] p-[10px] rounded-[14px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.46),rgba(15,23,42,0.7))] text-textColor relative justify-center items-center flex flex-col gap-[10px] cursor-pointer shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-sky-300/20 hover:bg-[linear-gradient(180deg,rgba(30,41,59,0.62),rgba(15,23,42,0.82))] transition-all duration-200"
               >
                 <div>
                   {item.identifier === 'youtube' ? (
