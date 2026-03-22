@@ -107,7 +107,7 @@ export const AgentList: FC<{ onChange: (arr: any[]) => void }> = ({
   return (
     <div
       className={clsx(
-        'trz flex flex-col gap-[15px] transition-all relative border-e border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,14,28,0.96))] backdrop-blur-xl',
+        'agent-side-panel trz flex flex-col gap-[15px] transition-all relative border-e border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,14,28,0.96))] backdrop-blur-xl',
         collapseMenu === '1' ? 'group sidebar w-[100px]' : 'w-[280px]'
       )}
     >
@@ -145,8 +145,8 @@ export const AgentList: FC<{ onChange: (arr: any[]) => void }> = ({
               className={clsx(
                 'flex gap-[12px] items-center group/profile justify-center rounded-[12px] px-[10px] py-[8px] cursor-pointer transition-all duration-200',
                 selected.some((p) => p.id === integration.id)
-                  ? 'bg-white/[0.05] border border-white/10 shadow-[0_8px_30px_rgba(2,6,23,0.25)]'
-                  : 'opacity-35 border border-transparent hover:opacity-100 hover:bg-white/[0.04] hover:border-white/8'
+                  ? 'agent-side-item-selected bg-white/[0.05] border border-white/10 shadow-[0_8px_30px_rgba(2,6,23,0.25)]'
+                  : 'agent-side-item opacity-35 border border-transparent hover:opacity-100 hover:bg-white/[0.04] hover:border-white/8'
               )}
             >
               <div
@@ -205,7 +205,7 @@ export const Agent: FC<{ children: ReactNode }> = ({ children }) => {
   return (
     <PropertiesContext.Provider value={{ properties }}>
       <AgentList onChange={setProperties} />
-      <div className="flex flex-1 bg-[linear-gradient(180deg,rgba(10,14,26,0.94),rgba(8,14,28,0.98))]">
+      <div className="agent-main-shell flex flex-1 bg-[linear-gradient(180deg,rgba(10,14,26,0.94),rgba(8,14,28,0.98))]">
         {children}
       </div>
       <Threads />
@@ -228,7 +228,7 @@ const Threads: FC = () => {
   return (
     <div
       className={clsx(
-        'trz flex flex-col gap-[15px] transition-all relative border-s border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,14,28,0.96))] backdrop-blur-xl',
+        'agent-side-panel trz flex flex-col gap-[15px] transition-all relative border-s border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.88),rgba(8,14,28,0.96))] backdrop-blur-xl',
         'w-[280px]'
       )}
     >
@@ -265,8 +265,8 @@ const Threads: FC = () => {
               className={clsx(
                 'overflow-ellipsis overflow-hidden whitespace-nowrap px-[12px] py-[10px] rounded-[12px] cursor-pointer border transition-all duration-200',
                 p.id === id
-                  ? 'bg-white/[0.06] border-sky-300/15 text-textColor shadow-[0_10px_28px_rgba(2,6,23,0.24)]'
-                  : 'border-transparent text-textColor/75 hover:text-textColor hover:bg-white/[0.04] hover:border-white/8'
+                  ? 'agent-thread-selected bg-white/[0.06] border-sky-300/15 text-textColor shadow-[0_10px_28px_rgba(2,6,23,0.24)]'
+                  : 'agent-thread-item border-transparent text-textColor/75 hover:text-textColor hover:bg-white/[0.04] hover:border-white/8'
               )}
               href={`/agents/${p.id}`}
               key={p.id}

@@ -60,9 +60,9 @@ export const AgentChat: FC = () => {
             '--copilot-kit-background-color': 'rgba(15,23,42,0.72)',
           } as CopilotKitCSSProperties
         }
-        className="trz agent flex flex-col gap-[15px] transition-all flex-1 items-center relative bg-[linear-gradient(180deg,rgba(10,14,26,0.94),rgba(8,14,28,0.98))]"
+        className="agent-chat-shell trz agent flex flex-col gap-[15px] transition-all flex-1 items-center relative bg-[linear-gradient(180deg,rgba(10,14,26,0.94),rgba(8,14,28,0.98))]"
       >
-        <div className="absolute left-0 w-full h-full pb-[20px]">
+        <div className="absolute left-0 w-full h-full px-[14px] pt-[14px] pb-[24px]">
           <CopilotChat
             className="w-full h-full"
             labels={{
