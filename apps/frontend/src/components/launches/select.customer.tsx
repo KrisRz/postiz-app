@@ -58,7 +58,7 @@ export const SelectCustomer: FC<{
         data-tooltip-content={t('select_customer_tooltip', 'Select Customer')}
         onClick={openClose}
         className={clsx(
-          'relative z-[20] cursor-pointer h-[42px] rounded-[12px] pl-[16px] pr-[12px] gap-[8px] border flex items-center bg-[rgba(15,23,42,0.74)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors',
+          'launches-control-surface relative z-[20] cursor-pointer h-[42px] rounded-[12px] pl-[16px] pr-[12px] gap-[8px] border flex items-center bg-[rgba(15,23,42,0.74)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] transition-colors',
           open ? 'border-sky-400/50 bg-white/[0.06]' : 'border-white/10 hover:border-white/20'
         )}
       >
@@ -72,7 +72,7 @@ export const SelectCustomer: FC<{
       {open && (
         <div
           style={pos}
-          className="flex flex-col fixed pt-[12px] bg-[rgba(15,23,42,0.96)] backdrop-blur-xl shadow-[0_24px_80px_rgba(2,6,23,0.45)] min-w-[250px] rounded-[16px] border border-white/10 overflow-hidden"
+          className="launches-dropdown-surface flex flex-col fixed pt-[12px] bg-[rgba(15,23,42,0.96)] backdrop-blur-xl shadow-[0_24px_80px_rgba(2,6,23,0.45)] min-w-[250px] rounded-[16px] border border-white/10 overflow-hidden"
         >
           <div className="text-[14px] font-[600] px-[12px] mb-[5px] pt-[4px]">
             {t('customers', 'Customers')}

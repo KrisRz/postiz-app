@@ -30,8 +30,7 @@ export const useAddProvider = (update?: () => void, invite?: boolean) => {
       title: 'Dodaj kanał',
       withCloseButton: true,
       classNames: {
-        modal:
-          '!bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(8,14,28,0.98))] !border !border-white/10 !shadow-[0_32px_120px_rgba(2,6,23,0.55)] !backdrop-blur-xl text-textColor',
+        modal: 'launches-modal-surface text-textColor',
       },
       children: (
         <AddProviderComponent invite={!!invite} update={update} {...data} />
@@ -582,8 +581,7 @@ export const AddProviderComponent: FC<{
             title: 'Adres URL',
             withCloseButton: true,
             classNames: {
-              modal:
-                '!bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(8,14,28,0.98))] !border !border-white/10 !shadow-[0_32px_120px_rgba(2,6,23,0.55)] !backdrop-blur-xl text-textColor',
+              modal: 'launches-modal-surface text-textColor',
             },
             children: <UrlModal gotoUrl={gotoIntegration} />,
           });
@@ -594,8 +592,7 @@ export const AddProviderComponent: FC<{
             title: t('add_provider_title', 'Dodaj kanał'),
             withCloseButton: true,
             classNames: {
-              modal:
-                '!bg-[linear-gradient(180deg,rgba(15,23,42,0.96),rgba(8,14,28,0.98))] !border !border-white/10 !shadow-[0_32px_120px_rgba(2,6,23,0.55)] !backdrop-blur-xl text-textColor',
+              modal: 'launches-modal-surface text-textColor',
             },
             children: (
               <CustomVariables
@@ -654,7 +651,7 @@ export const AddProviderComponent: FC<{
                       'data-tooltip-content': item.toolTip,
                     }
                   : {})}
-                className="w-full h-[100px] text-[14px] p-[10px] rounded-[14px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.46),rgba(15,23,42,0.7))] text-textColor relative justify-center items-center flex flex-col gap-[10px] cursor-pointer shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-sky-300/20 hover:bg-[linear-gradient(180deg,rgba(30,41,59,0.62),rgba(15,23,42,0.82))] transition-all duration-200"
+                className="launches-provider-card w-full h-[100px] text-[14px] p-[10px] rounded-[14px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.46),rgba(15,23,42,0.7))] text-textColor relative justify-center items-center flex flex-col gap-[10px] cursor-pointer shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-sky-300/20 hover:bg-[linear-gradient(180deg,rgba(30,41,59,0.62),rgba(15,23,42,0.82))] transition-all duration-200"
               >
                 <div>
                   {item.identifier === 'youtube' ? (

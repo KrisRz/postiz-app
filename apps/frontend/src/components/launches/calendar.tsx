@@ -340,12 +340,12 @@ export const WeekView = () => {
   return (
     <div className="flex flex-col text-textColor flex-1">
       <div className="flex-1 relative">
-        <div className="grid [grid-template-columns:136px_repeat(7,_minmax(0,_1fr))] gap-[6px] rounded-[18px] absolute h-full start-0 top-0 w-full overflow-auto border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(10,14,26,0.94))] p-[6px] shadow-[0_28px_80px_rgba(2,6,23,0.28)] backdrop-blur-xl scrollbar scrollbar-thumb-fifth scrollbar-track-newBgColor">
-          <div className="z-10 flex justify-center items-center flex-col h-[62px] rounded-[14px] border border-white/8 bg-[rgba(15,23,42,0.78)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sticky top-0"></div>
+        <div className="launches-calendar-grid grid [grid-template-columns:136px_repeat(7,_minmax(0,_1fr))] gap-[6px] rounded-[18px] absolute h-full start-0 top-0 w-full overflow-auto border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(10,14,26,0.94))] p-[6px] shadow-[0_28px_80px_rgba(2,6,23,0.28)] backdrop-blur-xl scrollbar scrollbar-thumb-fifth scrollbar-track-newBgColor">
+          <div className="launches-calendar-header z-10 flex justify-center items-center flex-col h-[62px] rounded-[14px] border border-white/8 bg-[rgba(15,23,42,0.78)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sticky top-0"></div>
           {localizedDays.map((day, index) => (
             <div
               key={day.name}
-              className="p-2 text-center flex justify-center items-center flex-col h-[62px] rounded-[14px] border border-white/8 bg-[rgba(15,23,42,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sticky top-0 z-[20] backdrop-blur-xl"
+              className="launches-calendar-header p-2 text-center flex justify-center items-center flex-col h-[62px] rounded-[14px] border border-white/8 bg-[rgba(15,23,42,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sticky top-0 z-[20] backdrop-blur-xl"
             >
               <div className="text-[13px] font-[500] uppercase tracking-[0.08em] text-textColor/55">
                 {day.name}
@@ -438,11 +438,11 @@ export const MonthView = () => {
   return (
     <div className="flex flex-col text-textColor flex-1">
       <div className="flex-1 flex relative">
-        <div className="grid grid-cols-7 grid-rows-[62px_auto] gap-[6px] rounded-[18px] absolute start-0 top-0 overflow-auto w-full h-full border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(10,14,26,0.94))] p-[6px] shadow-[0_28px_80px_rgba(2,6,23,0.28)] backdrop-blur-xl scrollbar scrollbar-thumb-tableBorder scrollbar-track-secondary">
+        <div className="launches-calendar-grid grid grid-cols-7 grid-rows-[62px_auto] gap-[6px] rounded-[18px] absolute start-0 top-0 overflow-auto w-full h-full border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.9),rgba(10,14,26,0.94))] p-[6px] shadow-[0_28px_80px_rgba(2,6,23,0.28)] backdrop-blur-xl scrollbar scrollbar-thumb-tableBorder scrollbar-track-secondary">
           {localizedDays.map((day) => (
             <div
               key={day}
-              className="z-[20] p-2 flex justify-center items-center flex-col h-[62px] rounded-[14px] border border-white/8 bg-[rgba(15,23,42,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sticky top-0 backdrop-blur-xl"
+              className="launches-calendar-header z-[20] p-2 flex justify-center items-center flex-col h-[62px] rounded-[14px] border border-white/8 bg-[rgba(15,23,42,0.82)] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] sticky top-0 backdrop-blur-xl"
             >
               <div className="text-[13px] font-[600] uppercase tracking-[0.08em] text-textColor/70">
                 {day}
@@ -813,8 +813,8 @@ export const CalendarColumn: FC<{
         loading && 'animate-pulse',
         isBeforeNow
           ? 'cursor-not-allowed'
-          : 'border border-white/8 rounded-[14px] bg-[rgba(15,23,42,0.58)] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-md'
-      )}
+          : 'launches-calendar-cell border border-white/8 rounded-[14px] bg-[rgba(15,23,42,0.58)] shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] backdrop-blur-md'
+        )}
       ref={drop as any}
     >
       {display === 'month' && (
@@ -842,7 +842,7 @@ export const CalendarColumn: FC<{
         >
           {loading && (
             <div className="h-full w-full p-[5px] animate-pulse absolute left-0 top-0 z-[50]">
-              <div className="h-full w-full rounded-[12px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.7),rgba(15,23,42,0.86))]" />
+              <div className="launches-calendar-cell h-full w-full rounded-[12px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.7),rgba(15,23,42,0.86))]" />
             </div>
           )}
           {list.map((post) => (

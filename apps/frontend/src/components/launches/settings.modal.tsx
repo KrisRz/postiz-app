@@ -63,7 +63,7 @@ export const SettingsModal: FC<{
     onClose();
   }, [values, integration]);
   return (
-    <div className="rounded-[18px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.58),rgba(10,14,26,0.9))] p-[18px] shadow-[0_24px_60px_rgba(2,6,23,0.22)] backdrop-blur-xl">
+    <div className="launches-modal-panel rounded-[18px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.58),rgba(10,14,26,0.9))] p-[18px] shadow-[0_24px_60px_rgba(2,6,23,0.22)] backdrop-blur-xl">
       <div className="mt-[4px] flex flex-col gap-[12px]">
         {values.map((setting: any, index: number) => (
           <Element

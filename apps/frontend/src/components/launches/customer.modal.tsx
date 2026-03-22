@@ -49,7 +49,7 @@ export const CustomerModal: FC<{
   );
   const { data } = useSWR('/customers', loadCustomers);
   return (
-    <div className="relative w-full rounded-[18px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.58),rgba(10,14,26,0.9))] p-[18px] shadow-[0_24px_60px_rgba(2,6,23,0.22)] backdrop-blur-xl">
+    <div className="launches-modal-panel relative w-full rounded-[18px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,23,42,0.58),rgba(10,14,26,0.9))] p-[18px] shadow-[0_24px_60px_rgba(2,6,23,0.22)] backdrop-blur-xl">
       <div className="mb-[80px]">
         <Autocomplete
           value={customer}
