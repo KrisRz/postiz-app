@@ -19,5 +19,12 @@ export const HtmlComponent: FC = () => {
     }
   }, [dir]);
 
+  useEffect(() => {
+    const match = document.cookie.match(/(?:^|;\s*)mode=(dark|light)/);
+    const mode = match?.[1] || 'dark';
+    document.body.classList.remove('dark', 'light');
+    document.body.classList.add(mode);
+  }, []);
+
   return null;
 };

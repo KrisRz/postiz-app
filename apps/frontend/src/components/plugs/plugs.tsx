@@ -96,7 +96,7 @@ export const Plugs = () => {
     return (
       <div className="bg-newBgColorInner p-[20px] flex flex-1 flex-col gap-[15px] transition-all items-center justify-center">
         <div>
-          <img src="/wtyczki.png" className="w-full max-w-[420px] h-auto" />
+          <img src="/wtyczki1.png" className="w-full max-w-[420px] h-auto" />
         </div>
         <div className="text-[48px]">
           {t(

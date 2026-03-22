@@ -463,7 +463,7 @@ export const MediaBox: FC<{
           >
             {!isLoading && !data?.results?.length && (
               <>
-                <NoMediaIcon />
+                <img src="/1.png" className="w-full max-w-[320px] h-auto" />
                 <div className="text-[20px] font-[600]">
                   {t(
                     'you_dont_have_any_media_yet',
@@ -838,11 +838,6 @@ export const MultiMediaComponent: FC<{
                   <AiVideo value={text} onChange={changeMedia} />
                 </>
               )}
-            </div>
-          )}
-          {!mediaNotAvailable && (
-            <div className="text-newColColor h-full flex items-center">
-              <VerticalDividerIcon />
             </div>
           )}
           {!!toolBar && (

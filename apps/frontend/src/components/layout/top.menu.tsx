@@ -359,7 +359,7 @@ export const TopMenu: FC = () => {
               ))
         }
       </div>
-      <div className="flex flex-col minCustom:gap-[16px] blurMe w-full items-center mt-auto pb-[10px]">
+      <div className="flex flex-col minCustom:gap-[16px] blurMe w-full items-center pt-[4px]">
         {secondMenu
           .filter((f) => {
             if (f.hide) {

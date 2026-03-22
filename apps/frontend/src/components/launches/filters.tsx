@@ -272,10 +272,10 @@ export const Filters = () => {
   }, [calendar]);
 
   return (
-    <div className="text-textColor flex flex-col md:flex-row gap-[10px] items-center select-none rounded-[18px] border border-white/10 bg-white/[0.03] px-[12px] py-[10px] shadow-[0_18px_60px_rgba(2,6,23,0.2)] backdrop-blur-xl">
+    <div className="launches-filters text-textColor flex flex-col md:flex-row gap-[10px] items-center select-none rounded-[18px] border border-white/10 bg-white/[0.03] px-[12px] py-[10px] shadow-[0_18px_60px_rgba(2,6,23,0.2)] backdrop-blur-xl">
       {!isListView && (
         <div className="flex flex-grow flex-row items-center gap-[10px]">
-          <div className="h-[42px] border border-white/10 bg-[rgba(15,23,42,0.78)] gap-[1px] flex items-center rounded-[12px] overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+          <div className="launches-control-surface h-[42px] border border-white/10 bg-[rgba(15,23,42,0.78)] gap-[1px] flex items-center rounded-[12px] overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
             <div
               onClick={previous}
               className="cursor-pointer text-textColor rtl:rotate-180 px-[11px] bg-transparent h-full flex items-center justify-center hover:text-textItemFocused hover:bg-white/[0.06] transition-colors"
@@ -326,7 +326,7 @@ export const Filters = () => {
             <div className="text-center flex h-[42px]">
               <div
                 onClick={setToday}
-                className="hover:text-textItemFocused hover:bg-white/[0.08] py-[3px] px-[14px] flex justify-center items-center rounded-[12px] transition-all cursor-pointer text-[14px] bg-[rgba(15,23,42,0.78)] border border-white/10 h-[42px] font-[600]"
+                className="launches-control-surface hover:text-textItemFocused hover:bg-white/[0.08] py-[3px] px-[14px] flex justify-center items-center rounded-[12px] transition-all cursor-pointer text-[14px] bg-[rgba(15,23,42,0.78)] border border-white/10 h-[42px] font-[600]"
               >
                 {t('today', 'Today')}
               </div>
@@ -336,7 +336,7 @@ export const Filters = () => {
       )}
       {isListView && (
         <div className="flex flex-grow flex-row items-center gap-[10px]">
-          <div className="h-[42px] border border-white/10 bg-[rgba(15,23,42,0.78)] gap-[1px] flex items-center rounded-[12px] overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+          <div className="launches-control-surface h-[42px] border border-white/10 bg-[rgba(15,23,42,0.78)] gap-[1px] flex items-center rounded-[12px] overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
             <div
               onClick={previousPage}
               className={clsx(
@@ -402,7 +402,7 @@ export const Filters = () => {
         integrations={calendar.integrations}
       />
       {!isListView && (
-        <div className="flex flex-row p-[4px] border border-white/10 bg-[rgba(15,23,42,0.74)] rounded-[12px] text-[14px] font-[500] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+        <div className="launches-toggle-surface flex flex-row p-[4px] border border-white/10 bg-[rgba(15,23,42,0.74)] rounded-[12px] text-[14px] font-[500] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
           <div
             className={clsx(
               'pt-[7px] pb-[6px] cursor-pointer w-[74px] text-center rounded-[8px] transition-colors',
@@ -438,7 +438,7 @@ export const Filters = () => {
           </div>
         </div>
       )}
-      <div className="flex flex-row p-[4px] border border-white/10 bg-[rgba(15,23,42,0.74)] rounded-[12px] text-[14px] font-[500] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+      <div className="launches-toggle-surface flex flex-row p-[4px] border border-white/10 bg-[rgba(15,23,42,0.74)] rounded-[12px] text-[14px] font-[500] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
         <div
           onClick={setCalendarView}
           className={clsx(
