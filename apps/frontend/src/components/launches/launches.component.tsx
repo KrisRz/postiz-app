@@ -2,7 +2,7 @@
 
 import { AddProviderButton } from '@gitroom/frontend/components/launches/add.provider.component';
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import Image from 'next/image';
+import SafeImage from '@gitroom/react/helpers/safe.image';
 import { capitalize, groupBy, orderBy } from 'lodash';
 import { CalendarWeekProvider } from '@gitroom/frontend/components/launches/calendar.context';
 import { Filters } from '@gitroom/frontend/components/launches/filters';
@@ -259,7 +259,6 @@ export const MenuComponent: FC<
             'data-tooltip-content': integration.name,
           }
         : {})}
-      key={integration.id}
       className={clsx(
         'flex gap-[12px] items-center border border-transparent bg-white/[0.03] hover:bg-white/[0.05] hover:border-sky-300/15 group/profile transition-all rounded-[14px] px-[10px] py-[8px]',
         integration.refreshNeeded && 'cursor-pointer'
@@ -304,7 +303,7 @@ export const MenuComponent: FC<
             width={20}
           />
         ) : (
-          <Image
+          <SafeImage
             src={`/icons/platforms/${integration.identifier}.png`}
             className="rounded-[8px] absolute z-10 bottom-[5px] -end-[5px] border border-fifth"
             alt={integration.identifier}
