@@ -31,7 +31,10 @@ export class FacebookProvider extends SocialAbstract implements SocialProvider {
   }
   dto = FacebookDto;
 
-  override handleErrors(body: string):
+  override handleErrors(
+    body: string,
+    status: number
+  ):
     | {
         type: 'refresh-token' | 'bad-body';
         value: string;
@@ -129,7 +132,8 @@ export class FacebookProvider extends SocialAbstract implements SocialProvider {
     if (body.indexOf('1404112') > -1) {
       return {
         type: 'bad-body' as const,
-        value: 'For security reasons, your account has limited access to the site for a few days',
+        value:
+          'For security reasons, your account has limited access to the site for a few days',
       };
     }
 
@@ -152,6 +156,14 @@ export class FacebookProvider extends SocialAbstract implements SocialProvider {
       return {
         type: 'bad-body' as const,
         value: 'Facebook service temporarily unavailable',
+      };
+    }
+
+    if (status === 401) {
+      return {
+        type: 'bad-body' as const,
+        value:
+          'An unknown error occurred, please try again later or contact support',
       };
     }
 
@@ -283,14 +295,15 @@ export class FacebookProvider extends SocialAbstract implements SocialProvider {
 
     // Fetch pages the user explicitly shared during the OAuth dialog
     await fetchPaginated(
-      `https://graph.facebook.com/v20.0/me/accounts?fields=id,username,name,picture.type(large)&limit=100&access_token=${accessToken}`
+      `https://graph.facebook.com/v20.0/me/accounts?fields=id,username,name,access_token,picture.type(large)&limit=100&access_token=${accessToken}`
     );
 
     // Also fetch pages via Business Manager API to discover pages
     // not selected during the OAuth page selection step
     try {
-      let bizUrl: string | undefined =
-        `https://graph.facebook.com/v20.0/me/businesses?access_token=${accessToken}`;
+      let bizUrl:
+        | string
+        | undefined = `https://graph.facebook.com/v20.0/me/businesses?access_token=${accessToken}`;
 
       while (bizUrl) {
         const bizResponse = await (await fetch(bizUrl)).json();
@@ -298,7 +311,7 @@ export class FacebookProvider extends SocialAbstract implements SocialProvider {
           for (const business of bizResponse.data) {
             try {
               await fetchPaginated(
-                `https://graph.facebook.com/v20.0/${business.id}/owned_pages?fields=id,username,name,picture.type(large)&limit=100&access_token=${accessToken}`
+                `https://graph.facebook.com/v20.0/${business.id}/owned_pages?fields=id,username,name,access_token,picture.type(large)&limit=100&access_token=${accessToken}`
               );
             } catch {
               // Continue with other businesses
@@ -306,7 +319,7 @@ export class FacebookProvider extends SocialAbstract implements SocialProvider {
 
             try {
               await fetchPaginated(
-                `https://graph.facebook.com/v20.0/${business.id}/client_pages?fields=id,username,name,picture.type(large)&limit=100&access_token=${accessToken}`
+                `https://graph.facebook.com/v20.0/${business.id}/client_pages?fields=id,username,name,access_token,picture.type(large)&limit=100&access_token=${accessToken}`
               );
             } catch {
               // Continue with other businesses
@@ -324,27 +337,73 @@ export class FacebookProvider extends SocialAbstract implements SocialProvider {
 
   async fetchPageInformation(accessToken: string, data: { page: string }) {
     const pageId = data.page;
-    const {
-      id,
-      name,
-      access_token,
-      username,
-      picture: {
-        data: { url },
-      },
-    } = await (
-      await fetch(
-        `https://graph.facebook.com/v20.0/${pageId}?fields=username,access_token,name,picture.type(large)&access_token=${accessToken}`
-      )
-    ).json();
+    const fields = 'id,username,name,access_token,picture.type(large)';
 
-    return {
-      id,
-      name,
-      access_token,
-      picture: url,
-      username,
+    const searchPaginated = async (startUrl: string) => {
+      let url: string | undefined = startUrl;
+      while (url) {
+        const response = await (await fetch(url)).json();
+        if (response.data) {
+          const page = response.data.find(
+            (p: any) => String(p.id) === String(pageId)
+          );
+          if (page) {
+            return {
+              id: page.id,
+              name: page.name,
+              access_token: page.access_token,
+              picture: page.picture?.data?.url || '',
+              username: page.username,
+            };
+          }
+        }
+        url = response.paging?.next;
+      }
+      return null;
     };
+
+    // 1. Check /me/accounts
+    const fromAccounts = await searchPaginated(
+      `https://graph.facebook.com/v20.0/me/accounts?fields=${fields}&limit=100&access_token=${accessToken}`
+    );
+    if (fromAccounts) return fromAccounts;
+
+    // 2. Check Business Manager owned_pages and client_pages
+    try {
+      let bizUrl:
+        | string
+        | undefined = `https://graph.facebook.com/v20.0/me/businesses?access_token=${accessToken}`;
+
+      while (bizUrl) {
+        const bizResponse = await (await fetch(bizUrl)).json();
+        if (bizResponse.data) {
+          for (const business of bizResponse.data) {
+            try {
+              const fromOwned = await searchPaginated(
+                `https://graph.facebook.com/v20.0/${business.id}/owned_pages?fields=${fields}&limit=100&access_token=${accessToken}`
+              );
+              if (fromOwned) return fromOwned;
+            } catch {
+              // Continue with other businesses
+            }
+
+            try {
+              const fromClient = await searchPaginated(
+                `https://graph.facebook.com/v20.0/${business.id}/client_pages?fields=${fields}&limit=100&access_token=${accessToken}`
+              );
+              if (fromClient) return fromClient;
+            } catch {
+              // Continue with other businesses
+            }
+          }
+        }
+        bizUrl = bizResponse.paging?.next;
+      }
+    } catch {
+      // Business Manager API not available for all users
+    }
+
+    throw new Error('Page not found in your accounts');
   }
 
   async post(
