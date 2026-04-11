@@ -64,7 +64,7 @@ export default async function Auth(
                     />
                   </div>
                   <div>
-                    <Image
+                    <SafeImage
                       src={'/postra-logo.png'}
                       width={120}
                       height={40}
