@@ -122,7 +122,7 @@ module.exports = {
         loginBg: 'url(/auth/bg-login.webp)',
       },
       fontFamily: {
-        sans: ['Helvetica Neue'],
+        sans: ['var(--font-geist-sans)', 'Helvetica Neue', 'sans-serif'],
       },
       animation: {
         fade: 'fadeOut 0.5s ease-in-out',
