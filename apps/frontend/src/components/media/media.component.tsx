@@ -469,7 +469,7 @@ export const MediaBox: FC<{
           >
             {!isLoading && !data?.results?.length && (
               <>
-                <img src="/1.png" className="w-full max-w-[320px] h-auto" />
+                <img src="/1.webp" className="w-full max-w-[320px] h-auto" />
                 <div className="text-[20px] font-[600]">
                   {t(
                     'you_dont_have_any_media_yet',

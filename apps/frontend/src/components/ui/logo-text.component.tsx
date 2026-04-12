@@ -5,7 +5,7 @@ export const LogoTextComponent = () => {
   return (
     <div className="flex w-full justify-center">
       <Image
-        src="/logon3obackground-clean.png"
+        src="/logon3obackground-clean.webp"
         alt="Postra"
         width={594}
         height={582}
