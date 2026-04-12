@@ -39,7 +39,7 @@ export default async function AppLayout({ children }: { children: ReactNode }) {
   return (
     <html>
       <head>
-        <link rel="icon" href="/postra-icon.png" type="image/png" />
+        <link rel="icon" href="/postra-icon.webp" type="image/webp" />
         {!!process.env.DATAFAST_WEBSITE_ID && (
           <Script
             data-website-id={process.env.DATAFAST_WEBSITE_ID}
