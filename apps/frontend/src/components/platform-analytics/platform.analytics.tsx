@@ -174,7 +174,7 @@ export const PlatformAnalytics = () => {
           collapseMenu === '1' ? 'group sidebar w-[100px]' : 'w-[260px]'
         )}
       >
-        <div className="flex gap-[12px] flex-col">
+        <div className="flex gap-[12px] flex-col stagger-fade">
           <div className="flex items-center">
             <h2 className="group-[.sidebar]:hidden flex-1 text-[20px] font-[500]">
               {t('channels')}

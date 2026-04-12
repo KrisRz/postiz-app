@@ -11,6 +11,39 @@
   to { transform: rotate(360deg); }
 }
 
+@keyframes staggerFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stagger-fade > * {
+  opacity: 0;
+  animation: staggerFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+.stagger-fade > *:nth-child(1)  { animation-delay: 0.02s; }
+.stagger-fade > *:nth-child(2)  { animation-delay: 0.05s; }
+.stagger-fade > *:nth-child(3)  { animation-delay: 0.08s; }
+.stagger-fade > *:nth-child(4)  { animation-delay: 0.11s; }
+.stagger-fade > *:nth-child(5)  { animation-delay: 0.14s; }
+.stagger-fade > *:nth-child(6)  { animation-delay: 0.17s; }
+.stagger-fade > *:nth-child(7)  { animation-delay: 0.2s; }
+.stagger-fade > *:nth-child(8)  { animation-delay: 0.23s; }
+.stagger-fade > *:nth-child(9)  { animation-delay: 0.26s; }
+.stagger-fade > *:nth-child(10) { animation-delay: 0.29s; }
+.stagger-fade > *:nth-child(n+11) { animation-delay: 0.32s; }
+@media (prefers-reduced-motion: reduce) {
+  .stagger-fade > * {
+    opacity: 1;
+    animation: none;
+  }
+}
+
 body {
   color: var(--new-btn-text);
   min-height: 100vh;
