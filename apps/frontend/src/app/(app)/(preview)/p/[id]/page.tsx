@@ -56,7 +56,7 @@ export default async function Auth(
                 >
                   <div className="max-w-[55px]">
                     <SafeImage
-                      src={'/postra-icon.png'}
+                      src={'/postra-icon.webp'}
                       width={55}
                       height={55}
                       alt="Postra"
