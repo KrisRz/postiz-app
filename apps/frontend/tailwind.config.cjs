@@ -118,8 +118,8 @@ module.exports = {
         13: 'repeat(13, minmax(0, 1fr));',
       },
       backgroundImage: {
-        loginBox: 'url(/auth/login-box.png)',
-        loginBg: 'url(/auth/bg-login.png)',
+        loginBox: 'url(/auth/login-box.webp)',
+        loginBg: 'url(/auth/bg-login.webp)',
       },
       fontFamily: {
         sans: ['Helvetica Neue'],
