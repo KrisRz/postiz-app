@@ -122,12 +122,13 @@ module.exports = {
         loginBg: 'url(/auth/bg-login.webp)',
       },
       fontFamily: {
-        sans: ['Helvetica Neue'],
+        sans: ['var(--font-geist-sans)', 'Helvetica Neue', 'sans-serif'],
       },
       animation: {
         fade: 'fadeOut 0.5s ease-in-out',
         normalFadeIn: 'normalFadeIn 0.5s ease-in-out',
         fadeIn: 'normalFadeIn 0.2s ease-in-out forwards',
+        modalIn: 'modalIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         normalFadeOut: 'normalFadeOut 0.5s linear 5s forwards',
         overflow: 'overFlow 0.5s ease-in-out forwards',
         overflowReverse: 'overFlowReverse 0.5s ease-in-out forwards',
@@ -177,6 +178,16 @@ module.exports = {
           },
           '100%': {
             opacity: 1,
+          },
+        },
+        modalIn: {
+          '0%': {
+            opacity: 0,
+            transform: 'scale(0.96) translateY(8px)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'scale(1) translateY(0)',
           },
         },
         overFlow: {

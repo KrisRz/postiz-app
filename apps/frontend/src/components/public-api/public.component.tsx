@@ -3,8 +3,8 @@
 import { useState, useCallback } from 'react';
 import { useSWRConfig } from 'swr';
 import { useUser } from '../layout/user.context';
-import copy from 'copy-to-clipboard';
 import { useToaster } from '@gitroom/react/toaster/toaster';
+import { CopyButton } from '@gitroom/frontend/components/ui/copy-button';
 import { useVariables } from '@gitroom/react/helpers/variable.context';
 import { useT } from '@gitroom/react/translation/get.transation.service.client';
 import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
@@ -157,41 +157,6 @@ const getMcpConfig = (
         hint: 'Settings > MCP Servers > + Add, then paste this config.',
       };
   }
-};
-
-const CopyButton = ({
-  text,
-  label,
-}: {
-  text: string;
-  label: string;
-}) => {
-  const toaster = useToaster();
-  return (
-    <button
-      type="button"
-      onClick={() => {
-        copy(text);
-        toaster.show(`${label} copied to clipboard`, 'success');
-      }}
-      className="cursor-pointer px-[16px] h-[36px] bg-btnSimple hover:bg-boxHover transition-colors rounded-[8px] text-[13px] font-[600] flex items-center gap-[6px]"
-    >
-      <svg
-        width="14"
-        height="14"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-        <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
-      </svg>
-      {label}
-    </button>
-  );
 };
 
 const McpSection = ({

@@ -16,7 +16,7 @@ import { useT } from '@gitroom/react/translation/get.transation.service.client';
 import { useVariables } from '@gitroom/react/helpers/variable.context';
 import useCookie from 'react-use-cookie';
 import { SVGLine } from '@gitroom/frontend/components/launches/launches.component';
-import { LoadingComponent } from '@gitroom/frontend/components/layout/loading';
+import { AnalyticsSkeleton } from '@gitroom/frontend/components/ui/skeleton';
 const allowedIntegrations = [
   'facebook',
   'instagram',
@@ -136,11 +136,7 @@ export const PlatformAnalytics = () => {
   }, [key, currentIntegration]);
 
   if (isLoading) {
-    return (
-      <div className="bg-newBgColorInner p-[20px] flex flex-1 flex-col gap-[15px] transition-all items-center justify-center">
-        <LoadingComponent />
-      </div>
-    );
+    return <AnalyticsSkeleton />;
   }
 
   if (!sortedIntegrations.length && !isLoading) {
@@ -178,7 +174,7 @@ export const PlatformAnalytics = () => {
           collapseMenu === '1' ? 'group sidebar w-[100px]' : 'w-[260px]'
         )}
       >
-        <div className="flex gap-[12px] flex-col">
+        <div className="flex gap-[12px] flex-col stagger-fade">
           <div className="flex items-center">
             <h2 className="group-[.sidebar]:hidden flex-1 text-[20px] font-[500]">
               {t('channels')}
