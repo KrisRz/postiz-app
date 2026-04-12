@@ -1,6 +1,14 @@
 import { SentryComponent } from '@gitroom/frontend/components/layout/sentry.component';
+import type { Viewport } from 'next';
 
 export const dynamic = 'force-dynamic';
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: '#0a0e1a',
+};
 import '../global.scss';
 import 'react-tooltip/dist/react-tooltip.css';
 import '@copilotkit/react-ui/styles.css';
