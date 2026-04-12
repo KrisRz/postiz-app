@@ -549,7 +549,7 @@ export const LaunchesComponent = () => {
                 <div className="flex-1 max-h-[500px] justify-center items-center flex">
                   <div className="flex flex-col gap-[12px] text-center">
                     <img
-                      src="/kanal.png"
+                      src="/kanal.webp"
                       alt="No channels"
                       className="mx-auto w-full max-w-[320px] h-auto"
                     />
