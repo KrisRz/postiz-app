@@ -99,7 +99,7 @@ export const LayoutComponent = ({ children }: { children: ReactNode }) => {
                       <div
                         id="left-menu"
                         className={clsx(
-                          'fixed h-full w-[64px] start-[24px] flex flex-1 top-0',
+                          'fixed h-full w-[64px] start-[10px] flex flex-1 top-0',
                           user?.admin && 'pt-[60px] max-h-[1000px]:w-[500px]'
                         )}
                       >
