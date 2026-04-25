@@ -383,8 +383,9 @@ export const AddProviderComponent: FC<{
   invite: boolean;
   update?: () => void;
   onboarding?: boolean;
+  isMobile?: boolean;
 }> = (props) => {
-  const { update, social, article, onboarding } = props;
+  const { update, social, article, onboarding, isMobile } = props;
   const { isGeneral, extensionId } = useVariables();
   const toaster = useToaster();
   const router = useRouter();
@@ -421,26 +422,38 @@ export const AddProviderComponent: FC<{
           modal.openModal({
             title: `Dodaj ${capitalize(identifier)}`,
             withCloseButton: true,
+            ...(isMobile ? { removeLayout: true, fullScreen: true } : {}),
             classNames: {
               modal: 'bg-transparent text-textColor',
             },
             children: (
-              <Web3Providers
-                onComplete={(code, newState) => {
-                  window.location.href = `/integrations/social/${identifier}?code=${code}&state=${newState}${
-                    onboarding ? '&onboarding=true' : ''
-                  }`;
-                }}
-                nonce={url}
-              />
+              <div
+                {...(isMobile ? { className: 'h-full bg-black p-[20px]' } : {})}
+              >
+                <Web3Providers
+                  onComplete={(code, newState) => {
+                    window.location.href = `/integrations/social/${identifier}?code=${code}&state=${newState}${
+                      onboarding ? '&onboarding=true' : ''
+                    }`;
+                  }}
+                  nonce={url}
+                />
+              </div>
             ),
           });
           return;
         };
         const gotoIntegration = async (externalUrl?: string) => {
+          // Mobile WebView: reuse the existing `externalUrl` param to
+          // carry the `postiz://` deep link so the backend redirects
+          // back to the iOS/Android app after OAuth completes, instead
+          // of the default web redirect.
           const params = [
-            externalUrl ? `externalUrl=${externalUrl}` : '',
+            `externalUrl=${encodeURIComponent(externalUrl)}`,
             onboardingParam,
+            isMobile
+              ? `redirectUrl=${encodeURIComponent('postiz://integrations')}`
+              : '',
           ]
             .filter(Boolean)
             .join('&');
@@ -467,6 +480,23 @@ export const AddProviderComponent: FC<{
             );
             modal.closeAll();
             copy(url);
+            return;
+          }
+
+          if (isMobile) {
+            // In the mobile WebView the OAuth provider (Google, Facebook,
+            // etc.) typically refuses in-WebView sign-in. Post the URL
+            // out to React Native so it can open the system browser;
+            // `window.open`/`location.href` aren't reliable here because
+            // RN WebView doesn't always route them through the native
+            // navigation intercept. The backend redirects back to the
+            // app via `postiz://` once OAuth completes.
+            const rn = (window as any).ReactNativeWebView;
+            if (rn && typeof rn.postMessage === 'function') {
+              rn.postMessage(JSON.stringify({ type: 'open-external', url }));
+              return;
+            }
+            window.open(url, '_blank');
             return;
           }
 
@@ -580,6 +610,7 @@ export const AddProviderComponent: FC<{
           modal.openModal({
             title: 'Adres URL',
             withCloseButton: true,
+            ...(isMobile ? { removeLayout: true, fullScreen: true } : {}),
             classNames: {
               modal: 'launches-modal-surface text-textColor',
             },
@@ -591,16 +622,21 @@ export const AddProviderComponent: FC<{
           modal.openModal({
             title: t('add_provider_title', 'Dodaj kanał'),
             withCloseButton: true,
+            ...(isMobile ? { removeLayout: true, fullScreen: true } : {}),
             classNames: {
               modal: 'launches-modal-surface text-textColor',
             },
             children: (
-              <CustomVariables
-                identifier={identifier}
-                gotoUrl={(url: string) => router.push(url)}
-                variables={customFields}
-                onboarding={onboarding}
-              />
+              <div
+                {...(isMobile ? { className: 'h-full bg-black p-[20px]' } : {})}
+              >
+                <CustomVariables
+                  identifier={identifier}
+                  gotoUrl={(url: string) => router.push(url)}
+                  variables={customFields}
+                  onboarding={onboarding}
+                />
+              </div>
             ),
           });
           return;
@@ -617,8 +653,10 @@ export const AddProviderComponent: FC<{
       <div className="flex flex-col">
         <div
           className={clsx(
-            'grid grid-cols-5 gap-[10px] justify-items-center justify-center',
-            onboarding ? 'grid-cols-9' : 'grid-cols-5'
+            isMobile && 'gap-[20px] flex flex-col',
+            !isMobile &&
+              'grid grid-cols-5 gap-[10px] justify-items-center justify-center',
+            isMobile ? {} : onboarding ? 'grid-cols-9' : 'grid-cols-5'
           )}
         >
           {social
@@ -651,7 +689,12 @@ export const AddProviderComponent: FC<{
                       'data-tooltip-content': item.toolTip,
                     }
                   : {})}
-                className="launches-provider-card w-full h-[100px] text-[14px] p-[10px] rounded-[14px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.46),rgba(15,23,42,0.7))] text-textColor relative justify-center items-center flex flex-col gap-[10px] cursor-pointer shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-sky-300/20 hover:bg-[linear-gradient(180deg,rgba(30,41,59,0.62),rgba(15,23,42,0.82))] transition-all duration-200"
+                className={clsx(
+                  isMobile
+                    ? 'flex-row h-[72px] p-[16px]'
+                    : 'flex-col p-[10px] h-[100px] justify-center',
+                  'launches-provider-card w-full text-[14px] rounded-[14px] border border-white/8 bg-[linear-gradient(180deg,rgba(30,41,59,0.46),rgba(15,23,42,0.7))] text-textColor relative items-center flex gap-[10px] cursor-pointer shadow-[inset_0_1px_0_rgba(255,255,255,0.04)] hover:border-sky-300/20 hover:bg-[linear-gradient(180deg,rgba(30,41,59,0.62),rgba(15,23,42,0.82))] transition-all duration-200'
+                )}
               >
                 <div>
                   {item.identifier === 'youtube' ? (
@@ -667,9 +710,14 @@ export const AddProviderComponent: FC<{
                     />
                   )}
                 </div>
-                <div className="whitespace-pre-wrap text-center">
+                <div
+                  className={clsx(
+                    isMobile ? '' : 'whitespace-pre-wrap',
+                    'text-center'
+                  )}
+                >
                   {item.name}
-                  {!!item.toolTip && (
+                  {!!item.toolTip && !isMobile && (
                     <svg
                       width="15"
                       height="15"
