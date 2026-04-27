@@ -4,12 +4,13 @@ import React, {
   FC,
   MouseEventHandler,
   useCallback,
+  useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
   useState,
 } from 'react';
-import { useClickOutside } from '@mantine/hooks';
+import { createPortal } from 'react-dom';
 import { useFetch } from '@gitroom/helpers/utils/custom.fetch';
 import { deleteDialog } from '@gitroom/react/helpers/delete.dialog';
 import { useToaster } from '@gitroom/react/toaster/toaster';
@@ -70,10 +71,20 @@ export const Menu: FC<{
   const iconClass =
     'flex h-[32px] w-[32px] items-center justify-center rounded-[10px] border border-white/8 bg-[rgba(15,23,42,0.78)] text-textColor/68 transition-all duration-200 group-hover:border-[#38bdf8]/28 group-hover:bg-[rgba(56,189,248,0.08)] group-hover:text-[#38bdf8]';
   const menuRef = useRef<HTMLDivElement>(null);
-  const ref = useClickOutside<HTMLDivElement>(() => {
-    setShow(false);
-  });
+  const triggerRef = useRef<HTMLDivElement>(null);
   const showRef = useRef(undefined);
+
+  useEffect(() => {
+    if (!show) return;
+    const handler = (e: MouseEvent) => {
+      const target = e.target as Node;
+      if (menuRef.current?.contains(target)) return;
+      if (triggerRef.current?.contains(target)) return;
+      setShow(false);
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, [show]);
 
   // Adjust menu position if it would overflow viewport
   useLayoutEffect(() => {
@@ -337,7 +348,7 @@ export const Menu: FC<{
     <div
       className="cursor-pointer relative select-none flex"
       onClick={changeShow}
-      ref={ref}
+      ref={triggerRef}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -355,7 +366,7 @@ export const Menu: FC<{
       <div>
         <div ref={showRef} />
       </div>
-      {show && (
+      {show && createPortal(
         <div
           ref={menuRef}
           onClick={(e) => e.stopPropagation()}
@@ -632,7 +643,8 @@ export const Menu: FC<{
             </div>
             <div className="text-[14px] font-[500]">{t('delete', 'Delete')}</div>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   );

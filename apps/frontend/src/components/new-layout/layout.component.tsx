@@ -110,7 +110,7 @@ export const LayoutComponent = ({ children }: { children: ReactNode }) => {
                       </div>
                     </div>
                     <div className="app-shell-surface flex-1 rounded-[20px] overflow-hidden flex flex-col gap-[1px] blurMe border border-white/10 shadow-[0_32px_120px_rgba(2,6,23,0.42)] bg-[rgba(15,23,42,0.72)] backdrop-blur-xl">
-                      <div className="app-shell-topbar flex bg-[rgba(15,23,42,0.82)] backdrop-blur-xl h-[56px] md:h-[60px] px-[16px] md:px-[24px] items-center gap-[8px] border-b border-white/10">
+                      <div className="app-shell-topbar relative z-[10] flex bg-[rgba(15,23,42,0.82)] backdrop-blur-xl h-[56px] md:h-[60px] px-[16px] md:px-[24px] items-center gap-[8px] border-b border-white/10">
                         <MobileNav />
                         <div className="text-[20px] md:text-[24px] font-[600] flex flex-1 truncate">
                           <Title />
