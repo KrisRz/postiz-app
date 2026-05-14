@@ -197,6 +197,7 @@ export const EditorWrapper: FC<{
 
   const setValue = useCallback(
     (value: string[]) => {
+      if (!Array.isArray(value)) return;
       const newValue = value.map((p, index) => {
         return {
           id: makeId(10),
@@ -218,7 +219,7 @@ export const EditorWrapper: FC<{
 
   useCopilotReadable({
     description: 'Current content of posts',
-    value: items.map((p) => p.content),
+    value: (items ?? []).map((p) => p.content),
   });
 
   useCopilotAction({
@@ -232,6 +233,7 @@ export const EditorWrapper: FC<{
       },
     ],
     handler: async ({ content }) => {
+      if (!Array.isArray(content) || content.length === 0) return;
       setValue(content);
     },
   });
