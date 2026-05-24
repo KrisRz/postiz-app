@@ -368,7 +368,7 @@ export const EditorWrapper: FC<{
     <div
       className={clsx(
         'relative flex-col gap-[20px] flex-1',
-        (items.length === 1 || !canEdit || !comments) && 'flex',
+        (items?.length === 1 || !canEdit || !comments) && 'flex',
         ((!canEdit && !isCreateSet) || !comments) &&
           'bg-newSettings rounded-[12px]'
       )}
@@ -422,7 +422,7 @@ export const EditorWrapper: FC<{
           <div className="absolute w-full h-full left-0 top-0 bg-newBackdrop opacity-60 z-[100] rounded-[12px]" />
         </>
       )}
-      {items.map((g, index) => (
+      {(items ?? []).map((g, index) => (
         <div
           key={g.id}
           className={clsx(
